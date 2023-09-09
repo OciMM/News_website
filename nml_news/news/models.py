@@ -5,7 +5,7 @@ class Category(models.Model):
     """Categories of app News. Here is categories of these models.
     For example 'Global News'"""
     name = models.CharField(max_length=50, verbose_name="Название")
-    slug = models.SlugField(max_length=120, blank=True, verbose_name="url-путь")
+    slug = models.SlugField(max_length=120, blank=True, unique=True, verbose_name="url-название")
 
     def __str__(self):
         return self.name
@@ -20,7 +20,7 @@ class Tag(models.Model):
     """Tags of app News. Here is tags of these models.
     For example 'Politic', 'Economic, 'Sport' etc."""
     name = models.CharField(max_length=50, verbose_name="Название")
-    slug = models.SlugField(max_length=120, blank=True, verbose_name="url-путь")
+    slug = models.SlugField(max_length=120, blank=True, unique=True, verbose_name="url-название")
 
     def __str__(self):
         return self.name
@@ -40,7 +40,7 @@ class News(models.Model):
     start_at = models.DateTimeField(auto_now_add=True, verbose_name="Создано")
     update_at = models.DateTimeField(auto_now=True, verbose_name="Обновлено")
     tags = models.ManyToManyField(Tag, blank=True, verbose_name="Теги")
-    slug = models.SlugField(max_length=150, blank=True, verbose_name="url-путь")
+    slug = models.SlugField(max_length=150, blank=True, unique=True, verbose_name="url-название")
 
     def __str__(self):
         return self.title
