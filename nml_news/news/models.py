@@ -41,6 +41,7 @@ class News(models.Model):
     update_at = models.DateTimeField(auto_now=True, verbose_name="Обновлено")
     tags = models.ManyToManyField(Tag, blank=True, verbose_name="Теги")
     slug = models.SlugField(max_length=150, blank=True, unique=True, verbose_name="url-название")
+    draft = models.BooleanField(default=False, verbose_name="Черновик")
 
     def __str__(self):
         return self.title

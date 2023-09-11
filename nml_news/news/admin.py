@@ -31,7 +31,7 @@ class TagAdmin(admin.ModelAdmin):
 @admin.register(models.News)
 class NewsAdmin(admin.ModelAdmin):
     """Admin panel of news"""
-    list_display = ('title', 'category', 'start_at', 'update_at')
-    list_filter = ('title', 'category', 'start_at', 'update_at')
-    search_fields = ('title', 'category', 'slug')
+    list_display = ('id', 'title', 'category', 'start_at', 'update_at', 'draft')
+    list_filter = ('id', 'title', 'category', 'start_at', 'update_at', 'draft')
+    search_fields = ('id', 'title', 'category', 'slug')
     form = NewsAdminForm
