@@ -5,12 +5,12 @@ from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
-class NewsAdminForm(forms.ModelForm):
+class ThoughtsAdminForm(forms.ModelForm):
     """Model of the Ckeditor panel"""
     text = forms.CharField(label="Содержание", widget=CKEditorUploadingWidget())
 
     class Meta:
-        model = models.News
+        model = models.Thoughts
         fields = '__all__'
 
 
@@ -28,10 +28,10 @@ class TagAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 
-@admin.register(models.News)
+@admin.register(models.Thoughts)
 class NewsAdmin(admin.ModelAdmin):
     """Admin panel of news"""
     list_display = ('id', 'title', 'category', 'start_at', 'update_at', 'draft')
     list_filter = ('id', 'category', 'start_at', 'update_at', 'draft')
     search_fields = ('id', 'title', 'category')
-    form = NewsAdminForm
+    form = ThoughtsAdminForm

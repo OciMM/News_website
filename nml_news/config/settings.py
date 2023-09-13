@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     
     'news.apps.NewsConfig',
+    'thoughts.apps.ThoughtsConfig',
 
     'ckeditor',
     'ckeditor_uploader',
@@ -159,7 +160,7 @@ SITE_ID = 1
 # CKEDITOR_SETTINGS
 CKEDITOR_CONFIGS = {
     'default': {
-        'skin': 'moono',
+        'skin': 'minimalist',
         # 'skin': 'office2013',
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
