@@ -43,11 +43,13 @@ INSTALLED_APPS = [
     
     'news.apps.NewsConfig',
     'thoughts.apps.ThoughtsConfig',
+    'preposition.apps.PrepositionConfig',
 
     'ckeditor',
     'ckeditor_uploader',
     'allauth',
-    'allauth.account'
+    'allauth.account',
+    'multiupload'
 ]
 
 MIDDLEWARE = [

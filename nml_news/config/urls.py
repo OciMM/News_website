@@ -26,7 +26,8 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
 
     path('', include('news.urls')),
-    path('thoughts/', include('thoughts.urls'))
+    path('thoughts/', include('thoughts.urls')),
+    path('preposition/', include('preposition.urls'))
 ]
 
 if settings.DEBUG:
