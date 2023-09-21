@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'news.apps.NewsConfig',
     'thoughts.apps.ThoughtsConfig',
     'preposition.apps.PrepositionConfig',
+    'donations.apps.DonationsConfig',
 
     'ckeditor',
     'ckeditor_uploader',
