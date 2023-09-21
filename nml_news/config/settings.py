@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    
+
+    'index.apps.IndexConfig',
     'news.apps.NewsConfig',
     'thoughts.apps.ThoughtsConfig',
     'preposition.apps.PrepositionConfig',
