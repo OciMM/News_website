@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -35,7 +36,7 @@ class News(models.Model):
     """Model of news. This model will be using for to create a news post."""
     title = models.CharField(max_length=150, verbose_name="Название поста")
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, verbose_name="Категория")
-    main_image = models.ImageField(upload_to='media/news_images/', verbose_name="Главное изображение поста")
+    main_image = models.ImageField(upload_to='images/news/', verbose_name="Главное изображение поста")
     text = models.TextField(verbose_name="Содержание поста")
     start_at = models.DateTimeField(auto_now_add=True, verbose_name="Создано")
     update_at = models.DateTimeField(auto_now=True, verbose_name="Обновлено")
@@ -45,6 +46,9 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("news_details", kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = "Новость"

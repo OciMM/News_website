@@ -4,12 +4,6 @@ from django.views.generic.base import View
 from . import models
 
 
-class IndexView(View):
-    """Получение главной страницы"""
-    def get(self, request):
-        return render(request, 'news/index.html')
-
-
 class NewsView(View):
     """Получение страниц новостей"""
     def get(self, request):
@@ -19,7 +13,7 @@ class NewsView(View):
 
 class NewsDetailView(View):
     """Получение информации для страницы новостей"""
-    def get(self, request, pk):
-        newses = models.News.objects.get(id=pk)
-        return render(request, 'news/single.html', {'newses': newses})
+    def get(self, request, slug):
+        news_details = models.News.objects.get(slug=slug)
+        return render(request, 'news/news_details.html', {'news_details': news_details})
 

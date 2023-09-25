@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'news.apps.NewsConfig',
     'thoughts.apps.ThoughtsConfig',
     'preposition.apps.PrepositionConfig',
-    'donations.apps.DonationsConfig',
 
     'ckeditor',
     'ckeditor_uploader',
@@ -129,7 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -149,8 +148,8 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [STATIC_DIR]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = ''
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/')
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 

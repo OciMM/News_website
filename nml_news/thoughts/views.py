@@ -5,3 +5,7 @@ from django.views.generic.base import View
 class ThoughtsView(View):
     def get(self, request):
         return render(request, 'thoughts/thoughts.html')
+
+
+def thoughts_detail(request):
+    return render(request, 'thoughts/thoughts_details.html')
