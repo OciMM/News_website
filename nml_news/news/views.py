@@ -1,19 +1,21 @@
 from django.shortcuts import render
 from django.views.generic.base import View
+from django.views.generic import ListView, DetailView
 
 from . import models
 
 
-class NewsView(View):
+class NewsView(ListView):
     """Получение страниц новостей"""
-    def get(self, request):
-        news = models.News.objects.all()
-        return render(request, 'news/news.html', {'news_list': news})
+    model = models.News
+    queryset = models.News.objects.filter(draft=False).order_by('-start_at')
+    template_name = 'news/news.html'
+    context_object_name = "news_list"
 
 
-class NewsDetailView(View):
+class NewsDetailView(DetailView):
     """Получение информации для страницы новостей"""
-    def get(self, request, slug):
-        news_details = models.News.objects.get(slug=slug)
-        return render(request, 'news/news_details.html', {'news_details': news_details})
-
+    model = models.News
+    slug_field = 'slug'
+    template_name = 'news/news_details.html'
+    context_object_name = 'news_details'

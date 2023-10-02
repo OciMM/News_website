@@ -29,7 +29,6 @@ urlpatterns = [
     path('news/', include('news.urls')),
     path('thoughts/', include('thoughts.urls')),
     path('preposition/', include('preposition.urls')),
-    path('donations/', include('donations.urls'))
 ]
 
 if settings.DEBUG:

@@ -4,7 +4,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Megazine Template</title>
+	<title>Новости - NovaMediaLibertarian</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -68,7 +68,7 @@
 			</nav>
 
 			<div class="colorlib-footer">
-				<ul style="text-align: center">
+				<ul>
 					<li><a href="#"><i class="icon-telegram"></i></a></li>
 					<li><a href="#"><i class="icon-instagram"></i></a></li>
 					<li><a href="#"><i class="icon-youtube"></i></a></li>
@@ -83,62 +83,50 @@
 			<aside id="colorlib-hero" class="js-fullheight">
 				<div class="flexslider js-fullheight">
 					<ul class="slides">
-				   	<li style="background-image: url(images/img_bg_1.jpg);">
+				   	<li style="background-image: url({% static 'images/image_bg_news.jpg' %});">
 				   		<div class="overlay"></div>
 				   		<div class="container-fluid">
 				   			<div class="row">
 					   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-xs-12 js-fullheight slider-text">
 					   				<div class="slider-text-inner">
 					   					<div class="desc desc2">
-					   						<p class="tag"><span>Style</span></p>
-						   					<h1><a href="#">Strategic Design for Brands</a></h1>
-						   					<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-						   					<p><a href="#" class="btn btn-primary btn-outline">Read more</a></p>
+						   					<h1><a href="#"><b>Новости от NovaMediaLibertarian</b></a></h1>
+						   					<p><b>Новости NovaMediaLibertarian: Быстро. Свободно. Объективно. Истинная информация на вашем пороге!</b></p>
+						   					<p><a href="#main_part" class="btn btn-primary btn-outline"><b>Прочитать новости</b><i class="icon-arrow-down" style="font-size: 17px;"></i></a></p>
 											</div>
 					   				</div>
 					   			</div>
 					   		</div>
 				   		</div>
 				   	</li>
-				   	<li style="background-image: url(images/img_bg_2.jpg);">
+						{% for el in news_list|slice:":2" %}
+						{% with second_url_gallery=el.main_image.url %}
+							{% with full_gallery=first_url_gallery|add:second_url_gallery %}
+				   	<li style="background-image: url({% static full_gallery %});;">
+							{% endwith %}
+						{% endwith %}
 				   		<div class="overlay"></div>
 				   		<div class="container-fluid">
 				   			<div class="row">
 					   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-xs-12 js-fullheight slider-text">
 					   				<div class="slider-text-inner">
 					   					<div class="desc desc2">
-					   						<p class="tag"><span>Sports</span></p>
-						   					<h1><a href="#">Creators of Brands Template</a></h1>
-												<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-												<p><a href="#" class="btn btn-primary btn-outline">Read more</a></p>
+					   						<p class="tag"><span>{{ el.category }}</span></p>
+						   					<h1>{{ el.title }}</h1>
+												{{ el.text|safe|slice:":108" }}
+												<p><a href="{{ el.get_absolute_url }}" class="btn btn-primary btn-outline">Читать</a></p>
 											</div>
 					   				</div>
 					   			</div>
 					   		</div>
 				   		</div>
 				   	</li>
-				   	<li style="background-image: url(images/img_bg_3.jpg);">
-				   		<div class="overlay"></div>
-				   		<div class="container-fluid">
-				   			<div class="row">
-					   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-xs-12 js-fullheight slider-text">
-					   				<div class="slider-text-inner">
-					   					<div class="desc desc2">
-					   						<p class="tag"><span>Fashion</span></p>
-						   					<h1><a href="#">Design &amp; develop functional sites</a></h1>
-												<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-												<p><a href="#" class="btn btn-primary btn-outline">Read more</a></p>
-											</div>
-					   				</div>
-					   			</div>
-					   		</div>
-				   		</div>
-				   	</li>
+						{% endfor %}
 				  	</ul>
 			  	</div>
 			</aside>
 
-		<div class="colorlib-blog">
+		<div class="colorlib-blog" id="main_part">
 		  	<div class="container-wrap">
 				<div class="row row-bottom-padded-md">
 			  		{% for el_news in news_list %}
@@ -147,11 +135,11 @@
 			  	<div class="row row-bottom-padded-md">
 			  		{% endif %}
 			  	<div class="col-md-4">
-					<div class="blog-entry-style animate-box">
+					<div class="blog-entry-style">
 				  		<div class="blog-img">
 							{% with second_url_gallery=el_news.main_image.url %}
 								{% with full_gallery=first_url_gallery|add:second_url_gallery %}
-									<a href="#"><img class="img-responsive" src="{% static full_gallery %}" alt="{{ el_news.main_image }}"></a>
+									<a href="{{ el_news.get_absolute_url }}"><img class="img-responsive" src="{% static full_gallery %}" alt="{{ el_news.main_image }}"></a>
 								{% endwith %}
 							{% endwith %}
 						</div>
@@ -162,6 +150,7 @@
 							<p class="meta">
 								<span class="date">{{ el_news.start_at|timesince }} назад</span>
 							</p>
+							<button type="button" class="btn btn-outline-black"><a href="{{ el_news.get_absolute_url }}">Читать</a></button>
 						</div>
 					</div>
 			  	</div>
