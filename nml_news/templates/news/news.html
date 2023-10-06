@@ -54,24 +54,31 @@
 	<div id="colorlib-page">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
-			<h1 id="colorlib-logo"><a href="{% url 'index' %}">NML</a></h1>
+			<h1 id="colorlib-logo"><a href="{% url 'index' %}"><img style="width: 100px; height: 100px;" src="{% static 'images/Logo-NML.png' %}" alt="logo"></a></h1>
 			<nav id="colorlib-main-menu" role="navigation">
+				{% if user.is_authenticated %}
+				<ul style="border-bottom: 1px solid #dae2e8; margin-bottom: 20px;">
+					<li><a href="{% url 'account_logout' %}">Выйти</a></li>
+				</ul>
+				{% else %}
+				<ul style="border-bottom: 1px solid #dae2e8; margin-bottom: 20px;">
+					<li><a href="{% url 'account_login' %}">Войти</a></li>
+					<li><a href="{% url 'account_signup' %}">Регистрация</a></li>
+				</ul>
+				{% endif %}
 				<ul>
 					<li><a href="{% url 'index' %}">Главная</a></li>
 					<li class="colorlib-active"><a href="{% url 'news' %}">Новости</a></li>
 					<li><a href="{% url 'thoughts' %}">Мысли</a></li>
 					<li><a href="{% url 'preposition' %}">Предложка</a></li>
-<!--					<li><a href="travel.html">Travel</a></li>-->
-<!--					<li><a href="sports.html">Sports</a></li>-->
-<!--					<li><a href="video.html">Video</a></li>-->
 				</ul>
 			</nav>
 
 			<div class="colorlib-footer">
 				<ul>
-					<li><a href="#"><i class="icon-telegram"></i></a></li>
+					<li><a href="https://t.me/nmlnews"><i class="icon-telegram"></i></a></li>
 					<li><a href="#"><i class="icon-instagram"></i></a></li>
-					<li><a href="#"><i class="icon-youtube"></i></a></li>
+					<li><a href="https://www.youtube.com/channel/UCsEVKb3EGY5G8njLCOV2PCg"><i class="icon-youtube"></i></a></li>
 					<li><a href="#"><i class="icon-twitter2"></i></a></li>
 					<li><a href="#"><i class="icon-vk"></i></a></li>
 				</ul>
@@ -112,7 +119,7 @@
 					   				<div class="slider-text-inner">
 					   					<div class="desc desc2">
 					   						<p class="tag"><span>{{ el.category }}</span></p>
-						   					<h1>{{ el.title }}</h1>
+						   					<h1 class="fw-weight-bolder">{{ el.title }}</h1>
 												{{ el.text|safe|slice:":108" }}
 												<p><a href="{{ el.get_absolute_url }}" class="btn btn-primary btn-outline">Читать</a></p>
 											</div>
@@ -131,7 +138,7 @@
 				<div class="row row-bottom-padded-md">
 			  		{% for el_news in news_list %}
 			  		{% if forloop.counter|divisibleby:4 %}
-			  		</div>
+				</div>
 			  	<div class="row row-bottom-padded-md">
 			  		{% endif %}
 			  	<div class="col-md-4">
