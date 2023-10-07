@@ -17,5 +17,10 @@
   <button type="submit">{% trans 'Sign Out' %}</button>
 </form>
 
+<div>
+      {% if user.is_authenticated %}
+      <a href="{% url 'account_email' %}">Изменить эл.почту</a>
+      {% endif %}
+</div>
 
 {% endblock %}

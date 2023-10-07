@@ -174,7 +174,7 @@
 									<div class="desc text-center">
 										<p class="tag"><span>{{ el_news.category }}</span></p>
 										<h2 class="head-article"><a href="{{ el_news.get_absolute_url }}">{{ el_news.title }}</a></h2>
-										<p>{{ el_news.text|safe|slice:":70" }}</p>
+										<h3 style="border-top: 1px solid #fff;" class="tag">Новости</h3>
 									</div>
 								</div>
 							</div>
@@ -194,7 +194,7 @@
 										<p class="tag"><span>Автор: {{ el_thoughts.author }}</span></p>
 										<p class="tag"><span>{{ el_thoughts.category }}</span></p>
 										<h2 class="head-article"><a href="{% url 'thoughts_details' el_thoughts.slug %}">{{ el_thoughts.title }}</a></h2>
-										<p>{{ el_thoughts.text|safe|slice:":70" }}</p>
+										<p style="border-top: 1px solid #fff;" class="tag">Мысли</p>
 									</div>
 								</div>
 							</div>

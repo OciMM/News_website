@@ -153,7 +153,6 @@
 						<div class="desc">
 							<span class="cat">{{ el_news.category }}</span>
 							<h2><a href="{{ el_news.get_absolute_url }}">{{ el_news.title }}</a></h2>
-							<p>{{ el_news.text|slice:":100"|safe }}</p>
 							<p class="meta">
 								<span class="date">{{ el_news.start_at|timesince }} назад</span>
 							</p>

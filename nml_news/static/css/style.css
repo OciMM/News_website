@@ -22,7 +22,7 @@ body {
       font-size: 16px; } }
 
 a {
-  color: #24221c;
+  color: #fff;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s; }
@@ -1499,3 +1499,33 @@ article {
     float: left;
     padding-top: 30px; } }
 
+
+.block-account {
+    height: auto;
+    width: 500px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 20%;
+
+    background-color: #000;
+    color: #fff;
+    border-radius: 30px;
+
+    text-align: center;
+}
+
+.block-account h1 {
+    color: #fff;
+}
+
+.block-account button {
+    border-radius: 10px;
+    color: #000;
+}
+
+.backup-account {
+    margin-left: 30px;
+    font-size: 20px;
+}

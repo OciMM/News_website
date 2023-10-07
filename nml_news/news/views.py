@@ -8,7 +8,7 @@ from . import models
 class NewsView(ListView):
     """Получение страниц новостей"""
     model = models.News
-    queryset = models.News.objects.filter(draft=False).order_by('-start_at')
+    queryset = models.News.objects.filter(draft=False).order_by('-start_at')[:12]
     template_name = 'news/news.html'
     context_object_name = "news_list"
 
