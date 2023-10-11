@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import PrepositionModel
 from .forms import PrepositionModelForm
 
@@ -10,6 +10,7 @@ def preposition_upload(request):
             text=request.POST.get('text'),
             file=request.FILES.get('file')
         )
+
     else:
         form = PrepositionModelForm()
 

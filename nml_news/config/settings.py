@@ -13,16 +13,19 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 
 import os
+import dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# загрузка с файла .env
+dotenv.load_dotenv('.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-g(w$l#qm+s_kq_wdc9ja=u&*krwk7fde73k)6bz6ft+v3v#(im'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -90,9 +93,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'NML_News_db',
-        'USER': 'nml_login',
-        'PASSWORD': 'iL4s7mG9GSQjxFe',
+        'NAME': os.environ['NAME_BD'],
+        'USER': os.environ['USER_BD'],
+        'PASSWORD': os.environ['PASSWORD'],
         'HOST': 'localhost',
         'PORT': 5432
     }
